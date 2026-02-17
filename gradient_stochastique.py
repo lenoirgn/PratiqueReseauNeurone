@@ -85,11 +85,3 @@ def descente_gradient_stochastique3(f:callable) -> None:
         print(f"iteration et x min={descente_gradient_stochastique(dg,x0,n=0.01)}")
         print(f"le minimun est:{f(descente_gradient_stochastique(dg,x0,n=0.01)[1])}")
 
-descente_gradient_stochastique3(g)
-# Avec l'appel de la fonction on a ces differentes valeurs:
-# (222, 1.67)
-# (197, 1.67)
-# (150, 1.67)
-# (60, 1.67)
-# (31, 1.69)
-# (36, 1.69)
