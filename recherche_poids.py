@@ -1,5 +1,6 @@
 from perceptron import calcul_sortie
 import matplotlib.pyplot as plt
+import numpy as np
 
 def debut_figure (entrées, sorties):
     fig, ax = plt.subplots ()
@@ -36,8 +37,10 @@ def recherche(liste_entree: list[list[int]],liste_sortie:list[int],liste_poid:li
     """
     fig,ax = debut_figure (liste_entree,liste_sortie)
     nb_erreurs = 1
-    for k in range(len(liste_entree)):
-            liste_entree[k].insert(0,1)
+    liste_entree = np.hstack((np.ones((liste_entree.shape[0], 1)), liste_entree))
+
+    #for k in range(len(liste_entree)):
+            #liste_entree[k].insert(0,1)
     while nb_erreurs > 0:
         nb_erreurs = 0   
         for i in range(len(liste_entree)):
@@ -80,3 +83,11 @@ for i in range (len (iris.target)):
         sorties.append (1)
  
 recherche(entrées,sorties,[-1, -3, 0],0.01)
+# 63
+# 0.idea/
+#         L1.tp4.sow.mamadou-radjaye.py
+#         __pycache__/
+#         env/
+#         eva.py
+#         recherche_poids (Copie 2).py
+#         requirements.txt

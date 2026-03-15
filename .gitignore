@@ -1,0 +1,11 @@
+# Dossiers à ignorer
+.env/                # si tu as un autre venv
+env/                 # ton environnement virtuel
+__pycache__/         # fichiers Python compilés
+.idea/               # configuration PyCharm
+
+# Fichiers spécifiques à ignorer
+*.pyc
+*.pyo
+*.log
+
