@@ -26,7 +26,7 @@ def ajoute_dernière_droite (fig, ax, a, b, c):
         x1 = [0, 7]
         y1 = [-a/c, -(5*b+a)/c]
         ax.plot (x1, y1, color = "red", linestyle = "-", linewidth= 3)
-    fig.show ()
+    plt.show ()
     
 def recherche(liste_entree: list[list[int]],liste_sortie:list[int],liste_poid:list[float],n:float):
     """ à_remplacer_par_ce_que_fait_la_fonction
@@ -84,10 +84,4 @@ for i in range (len (iris.target)):
  
 recherche(entrées,sorties,[-1, -3, 0],0.01)
 # 63
-# 0.idea/
-#         L1.tp4.sow.mamadou-radjaye.py
-#         __pycache__/
-#         env/
-#         eva.py
-#         recherche_poids (Copie 2).py
-#         requirements.txt
+# 0
