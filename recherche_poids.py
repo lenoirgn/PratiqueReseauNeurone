@@ -82,6 +82,6 @@ for i in range (len (iris.target)):
     else:
         sorties.append (1)
  
-recherche(entrées,sorties,[-1, -3, 0],0.01)
+recherche(entrées,sorties,[1, -3, 0],0.01)
 # 63
 # 0

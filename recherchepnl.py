@@ -52,7 +52,11 @@ entrées = scaler.transform (entrées_iris)
 # Je calcule la sortie attendue pour chaque donnée.
 sorties_iris = []
 for i in range (len (iris.target)):
-    if iris.target [i] == 0:
+#     if iris.target [i] == 0:
+#         sorties_iris.append (0)
+#     else:
+#         sorties_iris.append (1)
+    if iris.target [i] != 2:
         sorties_iris.append (0)
     else:
         sorties_iris.append (1)
@@ -80,9 +84,10 @@ liste_poids = [1,-3,0]
 n=0.01
 def descente_gradient_stochastique (liste_entree,liste_sortie,liste_poid,n):
     fig,ax = debut_figure (liste_entree,liste_sortie)
-    e= 0.001
+    e=1e-8
     corrections = 1
-    while  corrections >e:
+    correction_pre=0
+    while  abs(correction_pre-corrections)>e:
         corrections = 0
         for i in range(len(liste_entree)):
             sortie=calcul_sortie(liste_entree[i],liste_poid)
@@ -95,7 +100,8 @@ def descente_gradient_stochastique (liste_entree,liste_sortie,liste_poid,n):
                     liste_poid[j+1]=liste_poid[j+1]-n*d*liste_entree[i][j]*sortie*(1-sortie)
                     corrections=corrections+abs(n*d*liste_entree[i][j]*sortie*(1-sortie))
         ajoute_droite (ax,liste_poid[0],liste_poid[1], liste_poid[2])
-        print(corrections)
+        correction_pre=corrections
+        
     ajoute_dernière_droite (fig, ax, liste_poid[0],liste_poid[1], liste_poid[2])
                     
 descente_gradient_stochastique(entrées,sorties,liste_poids,n)
