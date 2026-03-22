@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn import datasets
 from sklearn.preprocessing import StandardScaler
-from math import exp
+from math import exp,tanh
 
 # Les fonctions permettant de créer le graphique
 import matplotlib.pyplot as plt
@@ -65,19 +65,27 @@ sorties = sorties_iris
 def logistique (v) :
     "Retourne la logistique de v"
     return 1/(1+exp(-v))
+def tangente_hyperbolique(v):
+    "Retourne la tangente hyperbolique de v"
+    return tanh(v)
 
 
 def calcul_sortie(liste_entree, liste_poids):
     v = liste_poids[0]  # biais
     for i in range(len(liste_entree)):
         v += liste_poids[i+1] * liste_entree[i]
-    return logistique(v)
+    #return logistique(v)
+    return  tangente_hyperbolique(v)
 
 def classe_predite(sortie:int)-> int:
-    if sortie <0.5:
-        return 0
-    else:
+    #if sortie <0.5:
+        #return 0
+    #else:
+        #return 1
+    if sortie>=0:
         return 1
+    else:
+        return 0
 
 
 liste_poids = [1,-3,0]
@@ -87,18 +95,20 @@ def descente_gradient_stochastique (liste_entree,liste_sortie,liste_poid,n):
     e=1e-8
     corrections = 1
     correction_pre=0
-    while  abs(correction_pre-corrections)>e:
+    while  abs(correction_pre-corrections)>=e:
         corrections = 0
         for i in range(len(liste_entree)):
             sortie=calcul_sortie(liste_entree[i],liste_poid)
             prediction=classe_predite(sortie)
             d=prediction-liste_sortie[i]
             if d !=0:
-                liste_poid[0]=liste_poid[0]-n*d*sortie*(1-sortie)
-                corrections=corrections+abs(n*d*sortie*(1-sortie))
+                delta_b=n*d*sortie*(1-sortie)
+                liste_poid[0]=liste_poid[0]-delta_b
+                corrections=corrections+abs(delta_b)
                 for j in range (len (liste_entree[i])):
-                    liste_poid[j+1]=liste_poid[j+1]-n*d*liste_entree[i][j]*sortie*(1-sortie)
-                    corrections=corrections+abs(n*d*liste_entree[i][j]*sortie*(1-sortie))
+                    delta_p=n*d*liste_entree[i][j]*sortie*(1-sortie)
+                    liste_poid[j+1]=liste_poid[j+1]-delta_p
+                    corrections=corrections+abs(delta_p)
         ajoute_droite (ax,liste_poid[0],liste_poid[1], liste_poid[2])
         correction_pre=corrections
         
