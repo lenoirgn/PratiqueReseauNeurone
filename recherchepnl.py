@@ -74,18 +74,18 @@ def calcul_sortie(liste_entree, liste_poids):
     v = liste_poids[0]  # biais
     for i in range(len(liste_entree)):
         v += liste_poids[i+1] * liste_entree[i]
-    #return logistique(v)
-    return  tangente_hyperbolique(v)
+    return logistique(v)
+    #return  tangente_hyperbolique(v)
 
 def classe_predite(sortie:int)-> int:
-    #if sortie <0.5:
-        #return 0
-    #else:
-        #return 1
-    if sortie>=0:
-        return 1
-    else:
+    if sortie <0.5:
         return 0
+    else:
+        return 1
+#     if sortie>=0:
+#         return 1
+#     else:
+#         return 0
 
 
 liste_poids = [1,-3,0]
