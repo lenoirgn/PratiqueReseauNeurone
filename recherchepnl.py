@@ -114,4 +114,4 @@ def descente_gradient_stochastique (liste_entree,liste_sortie,liste_poid,n):
         
     ajoute_dernière_droite (fig, ax, liste_poid[0],liste_poid[1], liste_poid[2])
                     
-descente_gradient_stochastique(entrées,sorties,liste_poids,n)
+#descente_gradient_stochastique(entrées,sorties,liste_poids,n)
